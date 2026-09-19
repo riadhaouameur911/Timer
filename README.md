@@ -75,7 +75,7 @@ The application contains:
 
 **Riadh Aouameur**
 
-GitHub: https://github.com/R-i-a-d-h
+GitHub: https://github.com/riadhaouameur911
 
 ## 📄 License
 
