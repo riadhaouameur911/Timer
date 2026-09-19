@@ -7,31 +7,120 @@
     <script src="script.js" defer></script>
   </head>
   <body>
-    <div class="timer">
-      <div class="time-box">
-        <span id="h">00</span>
-        <p>Hours</p>
-      </div>
+    <div class="container">
+      <header>
+        <h1>⏱️ Timer App</h1>
+        <p>Simple Timer & World Clock</p>
+      </header>
+      <!-- Timer Section -->
+      <section class="card">
+        <h2>🕒 Timer</h2>
+        <div class="timer">
+          <div class="time-box">
+            <span id="h">00</span>
+            <p>Hours</p>
+          </div>
+          <div class="separator">:</div>
+          <div class="time-box">
+            <span id="m">00</span>
+            <p>Minutes</p>
+          </div>
+          <div class="separator">:</div>
+          <div class="time-box">
+            <span id="s">00</span>
+            <p>Seconds</p>
+          </div>
+        </div>
+        <div class="buttons">
+          <button id="start">▶ Start</button>
+          <button id="pause">⏸ Pause</button>
+          <button id="reset">🔄 Reset</button>
+        </div>
+      </section>
 
-      <div class="separator">:</div>
+      <!-- Timer Section -->
+      <section class="card">
+        <h2>🕒 Countdown Timer</h2>
 
-      <div class="time-box">
-        <span id="m">00</span>
-        <p>Minutes</p>
-      </div>
+        <!-- Time Input -->
+        <div class="input-time">
+          <input
+            type="number"
+            id="inputHours"
+            min="0"
+            max="99"
+            placeholder="HH"
+          />
+          <span>:</span>
+          <input
+            type="number"
+            id="inputMinutes"
+            min="0"
+            max="59"
+            placeholder="MM"
+          />
+          <span>:</span>
+          <input
+            type="number"
+            id="inputSeconds"
+            min="0"
+            max="59"
+            placeholder="SS"
+          />
+        </div>
 
-      <div class="separator">:</div>
+        <button id="setTime" class="set-btn">Set Timer</button>
 
-      <div class="time-box">
-        <span id="s">00</span>
-        <p>Seconds</p>
-      </div>
-    </div>
+        <!-- Display -->
+        <div class="timer">
+          <div class="time-box">
+            <span id="h">00</span>
+            <p>Hours</p>
+          </div>
 
-    <div class="buttons">
-      <button id="start">Start</button>
-      <button id="pause">Pause</button>
-      <button id="reset">Reset</button>
+          <div class="separator">:</div>
+
+          <div class="time-box">
+            <span id="m">00</span>
+            <p>Minutes</p>
+          </div>
+
+          <div class="separator">:</div>
+
+          <div class="time-box">
+            <span id="s">00</span>
+            <p>Seconds</p>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="buttons">
+          <button id="start">▶ Start</button>
+          <button id="pause">⏸ Pause</button>
+          <button id="reset">🔄 Reset</button>
+        </div>
+      </section>
+      <!-- World Clock Section -->
+      <section class="card">
+        <h2>🌍 World Clock</h2>
+        <div class="world-clocks">
+          <div class="clock-row">
+            <span>🇩🇿 Algeria</span> <span id="algeria"></span>
+          </div>
+          <div class="clock-row">
+            <span>🇬🇧 London</span> <span id="london"></span>
+          </div>
+          <div class="clock-row">
+            <span>🇫🇷 Paris</span> <span id="paris"></span>
+          </div>
+          <div class="clock-row">
+            <span>🇺🇸 New York</span> <span id="newyork"></span>
+          </div>
+          <div class="clock-row">
+            <span>🇯🇵 Tokyo</span> <span id="tokyo"></span>
+          </div>
+        </div>
+      </section>
     </div>
   </body>
 </html>

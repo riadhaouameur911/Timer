@@ -35,7 +35,7 @@ timer/
 ### Clone the repository
 
 ```bash
-git clone https://github.com/R-i-a-d-h/timer.git
+git clone https://github.com/riadhaouameur911/Timer.git
 ```
 
 ### Navigate to the project

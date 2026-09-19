@@ -49,3 +49,56 @@ function onUpdateUI(timer) {
   m.innerHTML = String(mm).padStart(2, "0");
   s.innerHTML = String(ss).padStart(2, "0");
 }
+
+function updateWorldClocks() {
+  const options = {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+  };
+
+  document.getElementById("algeria").textContent = new Intl.DateTimeFormat(
+    "en-GB",
+    {
+      ...options,
+      timeZone: "Africa/Algiers",
+    },
+  ).format(new Date());
+
+  document.getElementById("london").textContent = new Intl.DateTimeFormat(
+    "en-GB",
+    {
+      ...options,
+      timeZone: "Europe/London",
+    },
+  ).format(new Date());
+
+  document.getElementById("paris").textContent = new Intl.DateTimeFormat(
+    "en-GB",
+    {
+      ...options,
+      timeZone: "Europe/Paris",
+    },
+  ).format(new Date());
+
+  document.getElementById("newyork").textContent = new Intl.DateTimeFormat(
+    "en-GB",
+    {
+      ...options,
+      timeZone: "America/New_York",
+    },
+  ).format(new Date());
+
+  document.getElementById("tokyo").textContent = new Intl.DateTimeFormat(
+    "en-GB",
+    {
+      ...options,
+      timeZone: "Asia/Tokyo",
+    },
+  ).format(new Date());
+}
+
+updateWorldClocks();
+
+setInterval(updateWorldClocks, 1000);
