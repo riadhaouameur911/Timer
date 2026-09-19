@@ -102,3 +102,105 @@ function updateWorldClocks() {
 updateWorldClocks();
 
 setInterval(updateWorldClocks, 1000);
+// ================================
+// COUNTDOWN TIMER
+// ================================
+
+const inputHours = document.getElementById("inputHours");
+const inputMinutes = document.getElementById("inputMinutes");
+const inputSeconds = document.getElementById("inputSeconds");
+
+const setTime = document.getElementById("setTime");
+
+const countdownH = document.getElementById("countdownH");
+const countdownM = document.getElementById("countdownM");
+const countdownS = document.getElementById("countdownS");
+
+const countdownStart = document.getElementById("countdownStart");
+const countdownPause = document.getElementById("countdownPause");
+const countdownReset = document.getElementById("countdownReset");
+
+let countdown = 0;
+let countdownInterval = null;
+
+// SET TIMER
+setTime.addEventListener("click", function () {
+  const hours = Number(inputHours.value) || 0;
+  const minutes = Number(inputMinutes.value) || 0;
+  const seconds = Number(inputSeconds.value) || 0;
+
+  countdown = hours * 3600 + minutes * 60 + seconds;
+
+  updateCountdownUI();
+});
+
+// START
+countdownStart.addEventListener("click", function () {
+  // Don't create multiple intervals
+  if (countdownInterval !== null) {
+    return;
+  }
+
+  if (countdown <= 0) {
+    return;
+  }
+
+  countdownInterval = setInterval(function () {
+    countdown--;
+
+    updateCountdownUI();
+
+    // Stop when reaching zero
+    if (countdown <= 0) {
+      clearInterval(countdownInterval);
+      countdownInterval = null;
+
+      alert("⏰ Time is up!");
+    }
+  }, 1000);
+});
+
+// PAUSE
+countdownPause.addEventListener("click", function () {
+  clearInterval(countdownInterval);
+
+  countdownInterval = null;
+});
+
+// RESET
+countdownReset.addEventListener("click", function () {
+  clearInterval(countdownInterval);
+  countdownInterval = null;
+
+  // Restore initial values
+  inputHours.value = "00";
+  inputMinutes.value = "01";
+  inputSeconds.value = "00";
+
+  // Restore countdown to 1 minute
+  countdown = 60;
+
+  updateCountdownUI();
+});
+// UPDATE UI
+function updateCountdownUI() {
+  const hours = Math.floor(countdown / 3600);
+
+  const minutes = Math.floor((countdown % 3600) / 60);
+
+  const seconds = countdown % 60;
+
+  countdownH.textContent = String(hours).padStart(2, "0");
+
+  countdownM.textContent = String(minutes).padStart(2, "0");
+
+  countdownS.textContent = String(seconds).padStart(2, "0");
+}
+
+const timeInputs = [inputHours, inputMinutes, inputSeconds];
+
+timeInputs.forEach((input) => {
+  input.addEventListener("input", () => {
+    input.value = input.value.replace(/\D/g, "").slice(0, 2);
+  });
+});
